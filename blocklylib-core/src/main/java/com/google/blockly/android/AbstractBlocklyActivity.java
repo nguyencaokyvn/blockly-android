@@ -607,6 +607,7 @@ public abstract class AbstractBlocklyActivity extends AppCompatActivity {
             @Override
             public void run() {
                 mDrawerToggle.syncState();
+                setNavDrawerOpened(false);
             }
         });
         mDrawerLayout.addDrawerListener(mDrawerToggle);
@@ -622,6 +623,7 @@ public abstract class AbstractBlocklyActivity extends AppCompatActivity {
      * @see #getCodeGenerationCallback()
      */
     protected void onRunCode() {
+
         mBlocklyActivityHelper.requestCodeGeneration(
                 getBlockGeneratorLanguage(),
                 getBlockDefinitionsJsonPaths(),

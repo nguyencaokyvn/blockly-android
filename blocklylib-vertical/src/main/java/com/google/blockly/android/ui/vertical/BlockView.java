@@ -76,19 +76,19 @@ public class BlockView extends AbstractBlockView<InputView> {
     // Vertical offset for positioning the "Next" block (if one exists).
     private int mNextBlockVerticalOffset;
     // List of widths of multi-field rows when rendering inline inputs.
-    private final ArrayList<Integer> mInlineRowWidth = new ArrayList<>();
+    private final List<Integer> mInlineRowWidth = new ArrayList<>();
 
     // Objects for drawing the block.
     private final PatchManager mPatchManager;
-    private final ArrayList<Drawable> mBlockPatches = new ArrayList<>();
+    private final List<Drawable> mBlockPatches = new ArrayList<>();
     // Overlay patches used to draw a selection border when mHighlightBlock is true.
-    private final ArrayList<Drawable> mBlockBorderPatches = new ArrayList<>();
+    private final List<Drawable> mBlockBorderPatches = new ArrayList<>();
     @Nullable private Drawable mOutputConnectorHighlightPatch = null;
     @Nullable private Drawable mPreviousConnectorHighlightPatch = null;
     @Nullable private Drawable mNextConnectionHighlightPatch = null;
-    private final ArrayList<Drawable> mInputConnectionHighlightPatches = new ArrayList<>();
+    private final List<Drawable> mInputConnectionHighlightPatches = new ArrayList<>();
 
-    private final ArrayList<Rect> mFillRects = new ArrayList<>();
+    private final List<Rect> mFillRects = new ArrayList<>();
     @Nullable private Rect mNextFillRect = null;
     private ColorFilter mBlockColorFilter;
     private final Paint mFillPaint = new Paint();
@@ -746,7 +746,7 @@ public class BlockView extends AbstractBlockView<InputView> {
 
         // Position inputs and connectors.
         mInputConnectionHighlightPatches.clear();
-        mInputConnectionHighlightPatches.ensureCapacity(mInputCount);
+        ((ArrayList)mInputConnectionHighlightPatches).ensureCapacity(mInputCount);
         for (int i = 0; i < mInputCount; ++i) {
             final InputView inputView = mInputViews.get(i);
             final ViewPoint inputLayoutOrigin = mInputLayoutOrigins.get(i);
